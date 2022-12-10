@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=La+Belle+Aurore&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+body{
+  height:100vh;
+  width:100%;
+  background-color:#254c4b;
+  font-family: 'Poppins', sans-serif;
+}
+
+header{
+  height:10%;
+  color:#9d9d87;
+  text-align:center;
+  font-size:4rem;
+  transition:1s;
+  margin-bottom:40px;
+  letter-spacing: 10px;
+}
+
+header.headertransition{
+  transition:4s;
+  text-shadow: 4px 4px 4px rgba(8, 0, 0, 0.604);
+  
+}
+
+
+main{
+  width:100%;
+  height:80%;
+  display:flex;
+  flex-direction: column;
+}
+
+.containerOfSubmit{
+  height:10%;
+  width:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+#inputValue{
+  outline: none;
+  border: 1px solid black;
+  padding:5px;
+  color:whitesmoke;
+  background-color:rgba(255, 255, 255, 0.488);
+
+  font-size:20px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius:10px;
+}
+
+#Submit{
+  color:#fffffea0;
+  background-color:#d7594f;
+  border:none;
+  width:90px;
+  height:34px;
+  font-size:17px;
+  border-radius:2px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  letter-spacing:3px;
+  font-weight: 200;
+  transition:1s;
+}
+#Submit:hover{
+  color:#fffffe;
+  transition:1s;
+}
+
+.ToDo {
+  height:90%;
+  width:100%;
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  
+}
+
+
+
+.containerOfToDo{
+  display:flex;
+  border-radius:10px;
+}
+.containerOfText{
+  background-color:#efefe7;
+  display:flex;
+  justify-content:space-between;
+  margin:10px;
+  padding:5px;
+  display:flex;
+  font-weight:bold;
+  width:50%;
+  border-radius: 50px;
+  background: #254c4b;
+  box-shadow:  5px 5px 10px #1f4140,
+             -5px -5px 10px #2b5756;
+  
+}
+.pText{
+  color:#dadbe2;
+  padding:10px;
+  font-size:25px;
+}
+.deleteTask{
+  margin-top:4px;
+  transition:1.5s;
+  width:70px;
+  height:50px;
+  font-size:20px;
+  border:none;
+  color:white;
+  background-color:#f7d078;
+  border-bottom-right-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+
+.deleteTask:hover{
+  
+  background:rgba(73, 67, 67, 0.031);
+  color:#d7594f;
+  transition:1.5s;
+
+}
+
+.arrayCounter{
+color:white;
+ text-align:center;
+ letter-spacing:10px;
+ PADDING:20PX;
+}
