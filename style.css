@@ -104,6 +104,13 @@ main{
              -5px -5px 10px #2b5756;
   
 }
+.fade{
+  opacity: 0;
+  transition:2s;
+}
+.start{
+  background-color:red;
+}
 .pText{
   color:#dadbe2;
   padding:10px;

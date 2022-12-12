@@ -9,7 +9,9 @@ let header = document.querySelector("header");
 
 let arrayCounter = document.createElement("h4");
 arrayCounter.className ="arrayCounter";
-let holderOfText ="";
+
+
+let containerOfText = document.querySelector(".containerOfText");
 
 function validate(input){
   if(/^\s/.test(input.value))
@@ -99,9 +101,14 @@ function showList(){
   
   taskLogic(arrayList);
 
+  
 
   TodoContainer.insertAdjacentElement("beforebegin",arrayCounter);
   TodoContainer.innerHTML = outPut;
+  
+
+
+ 
  
 }
 showList();
@@ -119,23 +126,17 @@ function taskLogic(array){
 }
 
 
-
-function deleteItem(index){
+function deleteItem(index) {
   let localItems = JSON.parse(localStorage.getItem("blocks"));
-  
-  
-  arrayList.splice(index, 1);
-  // setTimeout(greeting, 3000,index);
+  let containerOfText = document.getElementsByClassName("containerOfText"); // Get the container element
 
-
- 
-
-  localStorage.setItem("blocks",JSON.stringify(arrayList));
-  showList();
+  containerOfText[index].classList.add("fade"); // Add the "fade" class to the container
+  setTimeout(() => {
+    localItems.splice(index, 1); // Remove the item from the list
+    localStorage.setItem("blocks", JSON.stringify(localItems)); // Update the local storage
+    showList(); // Update the list on the page
+  }, 1200); // Wait 2 seconds before removing the item
 }
 
-// function greeting(index){
-  // arrayList.splice(index, 1);
-// }
 
 
