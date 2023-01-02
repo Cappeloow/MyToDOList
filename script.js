@@ -125,8 +125,12 @@ function taskLogic(array){
   }
 }
 
-
+let animationRunning =false;
 function deleteItem(index) {
+  if (animationRunning){
+    return;
+  }
+  animationRunning =true;
   let localItems = JSON.parse(localStorage.getItem("blocks"));
   let containerOfText = document.getElementsByClassName("containerOfText"); // Get the container element
 
@@ -135,8 +139,38 @@ function deleteItem(index) {
     localItems.splice(index, 1); // Remove the item from the list
     localStorage.setItem("blocks", JSON.stringify(localItems)); // Update the local storage
     showList(); // Update the list on the page
+    animationRunning = false;
   }, 1200); // Wait 2 seconds before removing the item
 }
 
 
 
+window.addEventListener('load', function() {
+  // Get all the elements with the class "moving-element"
+  var elements = document.querySelectorAll('.moving-element');
+
+  // Set the initial position and blur of the elements
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].style.left = '100%';
+    elements[i].style.filter = 'blur(5px)';
+  }
+
+  // Animate the elements to the middle of the screen
+  var interval = setInterval(function() {
+    for (var i = 0; i < elements.length; i++) {
+      var element = elements[i];
+      var currentLeft = parseInt(element.style.left, 10);
+      var newLeft = currentLeft - 10;
+
+      // Decrease the blur as the element moves towards the middle
+      element.style.filter = 'blur(' + (5 - newLeft / 20) + 'px)';
+
+      // Stop the animation when the element reaches the middle of the screen
+      if (newLeft < 50) {
+        clearInterval(interval);
+      } else {
+        element.style.left = newLeft + '%';
+      }
+    }
+  }, 10);
+});
