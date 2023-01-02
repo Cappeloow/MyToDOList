@@ -49,6 +49,17 @@ function writingtext(){
 
 writingtext();
 
+function letterChecker(){
+  if (input.value.length ===0){
+    submit.style.backgroundColor = "#d7594f"; 
+  }else if (input.value.length>=1 && input.value.length <=19 ){
+    submit.style.backgroundColor = "green"; 
+  }
+  else if (input.value.length>20){
+    submit.style.backgroundColor = "#d7594f"; 
+  }
+}
+input.addEventListener('input',letterChecker);
 
 
 submit.addEventListener("click", () =>{
@@ -63,13 +74,18 @@ submit.addEventListener("click", () =>{
 
   if (input.value.length ===0){
     input.style.borderColor ="red";
-  }else if(/^\s/.test(input.value)) {
+    
+  } else if (input.value.length>30){
+    input.style.borderColor ="red";
+  }
+  else if(/^\s/.test(input.value)) {
     input.style.borderColor ="red";
   } else {
     input.style.borderColor ="green";
     arrayList.push(input.value.toUpperCase());
   }
   input.value = "";
+  submit.style.backgroundColor ="#d7594f";
   localStorage.setItem("blocks",JSON.stringify(arrayList));
   showList();
     
@@ -140,37 +156,37 @@ function deleteItem(index) {
     localStorage.setItem("blocks", JSON.stringify(localItems)); // Update the local storage
     showList(); // Update the list on the page
     animationRunning = false;
-  }, 1200); // Wait 2 seconds before removing the item
+  }, 1000); // Wait 2 seconds before removing the item
 }
 
 
 
-window.addEventListener('load', function() {
-  // Get all the elements with the class "moving-element"
-  var elements = document.querySelectorAll('.moving-element');
+// window.addEventListener('load', function() {
+//   // Get all the elements with the class "moving-element"
+//   var elements = document.querySelectorAll('.moving-element');
 
-  // Set the initial position and blur of the elements
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].style.left = '100%';
-    elements[i].style.filter = 'blur(5px)';
-  }
+//   // Set the initial position and blur of the elements
+//   for (var i = 0; i < elements.length; i++) {
+//     elements[i].style.left = '100%';
+//     elements[i].style.filter = 'blur(5px)';
+//   }
 
-  // Animate the elements to the middle of the screen
-  var interval = setInterval(function() {
-    for (var i = 0; i < elements.length; i++) {
-      var element = elements[i];
-      var currentLeft = parseInt(element.style.left, 10);
-      var newLeft = currentLeft - 10;
+//   // Animate the elements to the middle of the screen
+//   var interval = setInterval(function() {
+//     for (var i = 0; i < elements.length; i++) {
+//       var element = elements[i];
+//       var currentLeft = parseInt(element.style.left, 10);
+//       var newLeft = currentLeft - 10;
 
-      // Decrease the blur as the element moves towards the middle
-      element.style.filter = 'blur(' + (5 - newLeft / 20) + 'px)';
+//       // Decrease the blur as the element moves towards the middle
+//       element.style.filter = 'blur(' + (5 - newLeft / 20) + 'px)';
 
-      // Stop the animation when the element reaches the middle of the screen
-      if (newLeft < 50) {
-        clearInterval(interval);
-      } else {
-        element.style.left = newLeft + '%';
-      }
-    }
-  }, 10);
-});
+//       // Stop the animation when the element reaches the middle of the screen
+//       if (newLeft < 50) {
+//         clearInterval(interval);
+//       } else {
+//         element.style.left = newLeft + '%';
+//       }
+//     }
+//   }, 10);
+// });
